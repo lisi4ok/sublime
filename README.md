@@ -5,7 +5,7 @@ Sublime Manager for "Sublime Text 3"
 Installation
 ------------
 ```
-git clone https://github.com/lisi4ok/sublime.git sm
+git clone https://github.com/lisi4ok/sublime.git <dir> && cd <dir>
 ```
 
 Usage
