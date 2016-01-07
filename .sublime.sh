@@ -4,7 +4,9 @@ source ./.constants.sh
 
 declare -A COMMANDS
 COMMANDS=(
-	['help']='Shows the help information.'
+	['help']='Shows the "Sublime Manager" help information.'
+	['commands']='Shows the "Sublime Manager" available commands.'
+	['packages']='Shows the "Sublime Manager" available packages (in dash-case).'
 	['install']='Install "Sublime Text 3".'
 	['uninstall']='Uninstall "Sublime Text 3".'
 	['reinstall']='Reinstall "Sublime Text 3".'
@@ -54,6 +56,20 @@ help () {
 	fi
 }
 
+commands () {
+	echo -e "${CLEAR}${COLOR_ORANGE}Available commands are:${CLEAR}"
+	for command in ${!COMMANDS[*]}; do
+		echo -e "${CLEAR}    - ${COLOR_CYAN}${command}${CLEAR}    =>    ${FONT_BOLD}${COMMANDS[$command]}${CLEAR}"
+	done
+}
+
+packages () {
+	echo -e "${CLEAR}${COLOR_ORANGE}Available packages are:${CLEAR}"
+	for package in ${PACKAGES[*]}; do
+		echo -e "${CLEAR}    - ${COLOR_CYAN}${package}${CLEAR}"
+	done
+}
+
 install () {
 	if [[ ! -f ./.sublime.lock ]]; then
 		_clear
@@ -81,13 +97,14 @@ kill () {
 	_kill
 }
 
-
 if [[ ! ${1} ]]; then
 	help
 else
 	if [[ ${!COMMANDS[*]} == *${1}* ]]; then
 		if [[ ${1} == 'help' ]]; then
 			help
+		elif [[ ${1} == 'packages' ]]; then
+			packages
 		elif [[ ${1} == 'install' ]]; then
 			if [[ ! ${2} ]]; then
 				install
@@ -106,12 +123,11 @@ else
 			# elif [[ ${PACKAGES[*]} == *${2}* ]]; then
 			# 	echo ${PACKAGES[@]}
 			fi
+		elif [[ ${1} == 'commands' ]]; then
+			commands
 		fi
 	else
-		echo -e "${CLEAR}${COLOR_ORANGE}Invalid Command.${CLEAR}"
-		echo -e "${CLEAR}${COLOR_ORANGE}Available commands are:${CLEAR}"
-		for command in ${!COMMANDS[*]}; do
-			echo -e "${CLEAR}    - ${COLOR_CYAN}${command}${CLEAR}    =>    ${FONT_BOLD}${COMMANDS[$command]}${CLEAR}"
-		done
+		echo -e "${CLEAR}${COLOR_ORANGE}Invalid command.${CLEAR}"
+		commands
 	fi
 fi
