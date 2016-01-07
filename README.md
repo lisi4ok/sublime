@@ -1,3 +1,31 @@
-Sublime - bash
+Sublime Manager
 ==============
-Setting up "Sublime Text 3" for "Hat Enterprise Linux (RHEL) 7"
+Sublime Manager for "Sublime Text 3"
+
+Installation
+------------
+```
+git clone https://github.com/lisi4ok/sublime.git sm
+```
+
+Usage
+------------
+```
+./sublime <command>
+```
+or
+```
+./sublime <command> <package>
+```
+
+Available commands
+------------
+```
+./sublime commands
+```
+
+Available packages
+------------
+```
+./sublime packages
+```
