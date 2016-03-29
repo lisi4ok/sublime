@@ -1,6 +1,7 @@
 Sublime Manager
 ==============
-Sublime Manager for "Sublime Text 3"
+Sublime Manager for "Sublime Text"
+NB: For now is implemented logic only for "Sublime Text 3"
 
 Installation
 ------------
@@ -11,21 +12,11 @@ git clone https://github.com/lisi4ok/sublime.git <dir> && cd <dir>
 Usage
 ------------
 ```
-./sublime <command>
-```
-or
-```
-./sublime <command> <package>
+./sm <command>
 ```
 
 Available commands
 ------------
 ```
-./sublime commands
-```
-
-Available packages
-------------
-```
-./sublime packages
+./sm commands
 ```

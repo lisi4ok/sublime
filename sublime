@@ -1,1 +1,0 @@
-bash ./.sublime.sh ${1} ${2}
